@@ -1,40 +1,42 @@
-name: CI
+name: CI + CD
 
 on:
   push:
-    branches:
-      - 'github-actions'
-      paths:
-      - 'web/**'
-      - '.github/workflows/main.yml'
-  pull request:
-    branches:
-      - 'github-actions'
-      paths:
-      - 'web/**'
-      - '.github/workflows/main.yml'
-
+    branches: [ github-actions ]
+  pull_request:
+    branches: [ github-actions ]
+  workflow_dispatch:
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Build Docker image
-      run: docker build -t pacman-app .
+      - name: Compile
+        run: docker build -t pacman-app .
 
-    - name: Run Docker container
-      run: docker run -p 8000:8080 pacman-app
 
-    - name: Wait for container to start
-      run: sleep 10
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    - name: Test application locally
-      run: |
-        # Run tests against the locally running application
-        # Adjust the URL to match your application's API endpoint
-        curl http://localhost:8080/
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+
+#     - name: Build Docker image
+#       run: docker build -t pacman-app .
+
+#     - name: Run Docker container
+#       run: docker run -p 8000:8080 pacman-app
+
+#     - name: Wait for container to start
+#       run: sleep 10
+
+#     - name: Test application locally
+#       run: |
+#         # Run tests against the locally running application
+#         # Adjust the URL to match your application's API endpoint
+#         curl http://localhost:8080/
 
