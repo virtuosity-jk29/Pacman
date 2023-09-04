@@ -1,9 +1,19 @@
-name: Docker Node.js CI/CD
+name: CI
 
 on:
   push:
     branches:
-      - github-actions
+      - 'github-actions'
+      paths:
+      - 'web/**'
+      - '.github/workflows/main.yml'
+  pull request:
+    branches:
+      - 'github-actions'
+      paths:
+      - 'web/**'
+      - '.github/workflows/main.yml'
+
 
 jobs:
   build:
@@ -26,4 +36,5 @@ jobs:
       run: |
         # Run tests against the locally running application
         # Adjust the URL to match your application's API endpoint
-        curl http://localhost:3000/
+        curl http://localhost:8080/
+
