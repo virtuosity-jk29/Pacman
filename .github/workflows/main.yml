@@ -26,6 +26,7 @@ jobs:
 
     #   manual way
 
+
       - name: Build and push Docker image
         run: |
           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
