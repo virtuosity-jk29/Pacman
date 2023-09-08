@@ -21,7 +21,7 @@ body {
 /* Links */
 .main a, .main a:link, .main a:active, .main a:visited {
     padding: 5px;
-    background: #c80a0a;
+    background: #e20707;
     color: rgb(255, 255, 255);
 }
 * { box-shadow: none !important; }
