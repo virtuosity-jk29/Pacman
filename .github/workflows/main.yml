@@ -58,7 +58,6 @@ jobs:
       - name: Login to Docker Hub Azure
         uses: azure/docker-login@v1
         with:
-          login-server: index.docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
