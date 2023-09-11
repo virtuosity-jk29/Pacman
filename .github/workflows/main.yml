@@ -75,6 +75,13 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          $IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-          docker build -t $IMAGE_TAG ./docker
-          docker push $IMAGE_TAG
+          try {
+    $env:IMAGE_TAG = "${env:DOCKERHUB_USERNAME}/hong0163215089:${env:GITHUB_SHA}"
+    
+    # Build the Docker image
+    docker build -t $env:IMAGE_TAG ./docker
+    
+    # Push the Docker image
+    docker push $env:IMAGE_TAG
+
+          
