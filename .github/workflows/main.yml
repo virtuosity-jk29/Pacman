@@ -78,5 +78,5 @@ jobs:
           $IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
           docker build -t $IMAGE_TAG ./docker
           docker push $IMAGE_TAG
-          shell: pwsh
+          shell: powershell
           
