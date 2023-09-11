@@ -63,18 +63,18 @@ jobs:
 
     #  with library
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: docker/  #where the dockerfile is being stored in
-          push: true
-          tags: hong0163215089/pacman-ssh:latest
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v4
+      #   with:
+      #     context: docker/  #where the dockerfile is being stored in
+      #     push: true
+      #     tags: hong0163215089/pacman-ssh:latest
 
     #   manual way
 
 
-      # - name: Build and push Docker image
-      #   run: |
-      #     IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-      #     docker build -t $IMAGE_TAG ./docker
-      #     docker push $IMAGE_TAG
+      - name: Build and push Docker image
+        run: |
+          IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
+          docker build -t $IMAGE_TAG ./docker
+          docker push $IMAGE_TAG
