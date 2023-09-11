@@ -78,5 +78,5 @@ jobs:
           $env:IMAGE_TAG = "${env:DOCKERHUB_USERNAME}/hong0163215089:${env:GITHUB_SHA}"
           docker build -t $env:IMAGE_TAG ./docker
           docker push $env:IMAGE_TAG
-          shell: powershell
+          
           
