@@ -71,8 +71,6 @@ jobs:
       #     tags: hong0163215089/pacman-ssh:latest
 
     #   manual way
-
-
       - name: Build and push Docker image
         run: |
           $env:IMAGE_TAG = "${env:DOCKERHUB_USERNAME}/hong0163215089:${env:GITHUB_SHA}"
