@@ -74,5 +74,5 @@ jobs:
       - name: Build and push Docker image
         run: |
           $IMAGE_TAG = "${env:DOCKERHUB_USERNAME}/hong0163215089:${env:GITHUB_SHA}"
-          docker build -t test/$IMAGE_TAG ./docker
+          docker build -t $IMAGE_TAG ./docker
           docker push $IMAGE_TAG
