@@ -43,7 +43,7 @@ on: push
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
 
       - name: Check out the repo
@@ -75,6 +75,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:BCCDROUYDJASZCRXHYWG5Q3E72XHW
+          IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
           docker build -t $IMAGE_TAG ./docker
           docker push $IMAGE_TAG
