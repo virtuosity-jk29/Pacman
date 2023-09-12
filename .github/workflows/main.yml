@@ -56,14 +56,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # - name: Build and push Docker image
-      #   uses: docker/build-push-action@v4
-      #   with:
-      #     context: docker/
-      #     push: true
-      #     tags: hong0163215089/pacman-ssh:latest
-
       - name: Build and push Docker image
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }} ./docker
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
+
+      # docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }} ./docker
+      # docker push ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
+          
