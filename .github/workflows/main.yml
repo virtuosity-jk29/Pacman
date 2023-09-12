@@ -75,7 +75,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }} ./docker
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
           
