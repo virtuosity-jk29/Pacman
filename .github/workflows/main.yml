@@ -58,6 +58,7 @@ jobs:
     #   manual way
 
       - name: Build and push Docker image
+        shell: powershell
         run: |
           
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }} ./docker
