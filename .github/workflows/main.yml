@@ -15,16 +15,16 @@
 #           username: ${{ secrets.DOCKERHUB_USERNAME }}
 #           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    #  with library
+#     #  with library
 
-      # - name: Build and push Docker image
-      #   uses: docker/build-push-action@v4
-      #   with:
-      #     context: docker/
-      #     push: true
-      #     tags: hong0163215089/pacman-ssh:latest
+#       # - name: Build and push Docker image
+#       #   uses: docker/build-push-action@v4
+#       #   with:
+#       #     context: docker/
+#       #     push: true
+#       #     tags: hong0163215089/pacman-ssh:latest
 
-    #   manual way
+#     #   manual way
 
 
 #       - name: Build and push Docker image
@@ -36,7 +36,7 @@
 
        
 # using self-hosted runner
-name: Node.js CI/CD 
+name: Node.js CI/CD
 
 on: push
 
@@ -45,6 +45,7 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: self-hosted
     steps:
+
       - name: Check out the repo
         uses: actions/checkout@v3
 
@@ -54,8 +55,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    #   manual way
+
       - name: Build and push Docker image
-        run: | 
+        run: |
+          
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }} ./docker
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
           
