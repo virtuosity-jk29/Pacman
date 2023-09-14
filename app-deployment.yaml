@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: nodeapp-deployment
+  labels:
+    app: nodeapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pacman-app
+      app: nodeapp
   template:
     metadata:
       labels:
-        app: pacman-app
+        app: nodeapp 
     spec:
       containers:
-        - name: pacmanserver
-          image: hong0163215089/hong0163215089
-          ports:
-            - containerPort: 8080
-          env:
-            - name: MONGODB_URI
-              value: "mongodb://mongodb-service:27017/mongodb"
+      - name: nodeserver
+        image: hong0163215089/hong0163215089
+        ports:
+        - containerPort: 8080
+
+
