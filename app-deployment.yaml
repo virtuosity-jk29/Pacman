@@ -13,8 +13,8 @@ spec:
         app: pacman-app
     spec:
       containers:
-        - name: pacman
-          image: pacman-app-image:latest
+        - name: pacmanserver
+          image: hong0163215089/hong0163215089
           ports:
             - containerPort: 8080
           env:
