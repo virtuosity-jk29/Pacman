@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hong0163215089
+  template:
+    metadata:
+      labels:
+        app: hong0163215089
+    spec:
+      containers:
+        - name: hong0163215089
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+
