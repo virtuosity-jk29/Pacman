@@ -15,7 +15,7 @@ spec:
         app: nodeapp 
     spec:
       containers:
-      - name: nodeserver
+      - name: hong0163215089
         image: hong0163215089/hong0163215089
         ports:
         - containerPort: 8080
