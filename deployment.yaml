@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nodeserver
-        image: thetips4you/nodeapp:latest
+        image: hong0163215089/pacman-k8s
         ports:
         - containerPort: 3000
