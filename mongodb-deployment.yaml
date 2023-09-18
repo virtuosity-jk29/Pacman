@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp-deployment-mongodb
+  labels:
+    app: nodeapp-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapp-mongodb
+  template:
+    metadata:
+      labels:
+        app: nodeapp-mongodb
+    spec:
+      containers:
+      - name: nodeserver-mongodb
+        image: mongo:3.4   # Change the image to MongoDB 3.4
+        ports:
+        - containerPort: 27017   # Change the container port to 27017

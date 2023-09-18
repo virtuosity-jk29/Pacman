@@ -15,7 +15,12 @@ spec:
         app: nodeapp 
     spec:
       containers:
+       - name: MONGO_DB_URL
+              value: mongodb://nodeapp-deployment-mongodb:27017/nodeapp-deployment
+            - name: PORT
+              value: "80"
+          image: hong0163215089/pacman-k8s:5
       - name: nodeserver
         image: hong0163215089/pacman-k8s
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
