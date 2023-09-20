@@ -1,19 +1,34 @@
+# FROM node:boron
+
+# # Create app directory
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
+
+# # Clone game source code
+# RUN git clone https://github.com/font/pacman.git .
+
+# # Install app dependencies
+# RUN npm install
+
+# # Expose port 8080
+# EXPOSE 8080
+
+# # Run container
+# CMD ["npm", "start"]
 FROM node:boron
 
-MAINTAINER Ivan Font <ifont@redhat.com>
+ENV MONGO_DB_USERNAME=admin \
+    MONGO_DB_PWD=password
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /home/app
 
-# Clone game source code
-RUN git clone https://github.com/font/pacman.git .
+COPY ./app /home/app
 
-# Install app dependencies
+# set default dir so that next commands executes in /home/app dir
+WORKDIR /home/app
+
+# will execute npm install in /home/app because of WORKDIR
 RUN npm install
 
-# Expose port 8080
-EXPOSE 8080
-
-# Run container
-CMD ["npm", "start"]
+# no need for /home/app/server.js because of WORKDIR
+CMD ["node", "start"]
