@@ -15,7 +15,7 @@ spec:
         app: nodeapp 
     spec:
       containers:
-      - name: nodeserver
+      - name: nodeapp
         image: hong0163215089/pacman-k8s
         ports:
         - containerPort: 8080
