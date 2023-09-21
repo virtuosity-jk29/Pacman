@@ -1,0 +1,75 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: pacman-k8s
+# spec:
+#   selector:
+#     app: pacman-k8s
+#   type: LoadBalancer
+#   ports:
+#   - port: 80
+#     targetPort: 8080
+# ---
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: pacman-k8s
+#   labels:
+#     app: pacman-k8s
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: pacman-k8s
+#   template:
+#     metadata:
+#       labels:
+#         app: pacman-k8s
+#     spec:
+#       containers:
+#       - name: nodeapp
+#         image: hong0163215089/pacman-k8s
+#         ports:
+#           - containerPort: 8080
+#       env:
+#       - name: MONGO_URL
+#         value: mongodb://mongodb:27017/pacman-k8s
+#       imagePullPolicy: Always
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pacman-k8s
+spec:
+  selector:
+    app: pacman-k8s
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pacman-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pacman-k8s
+  template:
+    metadata:
+      labels:
+        app: pacman-k8s
+    spec:
+      containers:
+        - name: pacman-k8s
+          image: hong0163215089/pacman-k8s
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_URL
+              value: mongodb://mongodb:27017/pacman-k8s
+          imagePullPolicy: Always
