@@ -27,24 +27,24 @@
 
 version: "3"
 services:
-  nodejs-kubernetes:
-    image: local-nodejs-kubernetes
+  app-k8s:
+    image: hong0163215089/pacman-k8s
     environment:  
       PORT: 80
-      MONGO_DB_URL: mongodb://nodejs-kubernetes-mongodb:27017/nodejs-kubernetes
+      MONGO_DB_URL: mongodb://mongodb-k8s:27017/app-k8s
     ports:
       - 8099:80
     depends_on:
-      - nodejs-kubernetes-mongodb
+      - mongodb-k8s
 
-  nodejs-kubernetes-mongodb:
+  mongodb-k8s:
     image: mongo:3.4
     environment:
       MONGO_DATA_DIR: /data/db
       MONGO_LOG_DIR: /dev/null
     volumes:
-      - nodejs-kubernetes-mongodb-volume:/data/db
+      - mongodb-k8s-volume:/data/db
     ports:
       - 23017:27017
 volumes:
-  nodejs-kubernetes-mongodb-volume:
+  mongodb-k8s-volume:
