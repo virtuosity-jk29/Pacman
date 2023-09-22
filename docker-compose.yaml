@@ -1,9 +1,7 @@
-version: "3"
+version: "3.4"
 services:
   app-k8s:
     build: .
-    ports:
-      - 8000:80
     image: hong0163215089/pacman-k8s
     environment:  
       PORT: 80
@@ -12,8 +10,10 @@ services:
       - mongodb-k8s
 
   mongodb-k8s:
-    image: mongo:3.4
+    image: mongo:latest
     restart: always
+    ports:
+      - 27017:27017
     volumes:
       - mongodb-k8s-volume:/data/db
 
