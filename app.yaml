@@ -15,7 +15,7 @@ kind: Deployment
 metadata:
   name: pacman-k8s
 spec:
-  replicas: 1
+  replicas: 1 #change to 3 replicas
   selector:
     matchLabels:
       app: pacman-k8s
@@ -31,5 +31,5 @@ spec:
             - containerPort: 8080
           env:
             - name: MONGO_URL
-              value: mongodb://mongodb:27017/pacman-k8s
+              value: mongodb://mongo:27017/pacman-k8s
           imagePullPolicy: Always
