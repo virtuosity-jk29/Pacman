@@ -1,21 +1,21 @@
-version: "3.4"
-services:
-  app-k8s:
-    build: .
-    image: hong0163215089/pacman-k8s
-    environment:  
-      PORT: 80
-      MONGO_DB_URL: mongodb://mongodb-k8s:27017/app-k8s
-    depends_on:
-      - mongodb-k8s
+# version: "3.4"
+# services:
+#   app-k8s:
+#     build: .
+#     image: hong0163215089/pacman-k8s
+#     environment:  
+#       PORT: 80
+#       MONGO_DB_URL: mongodb://mongodb-k8s:27017/pacman-k8s
+#     depends_on:
+#       - mongodb-k8s
 
-  mongodb-k8s:
-    image: mongo:latest
-    restart: always
-    ports:
-      - 27017:27017
-    volumes:
-      - mongodb-k8s-volume:/data/db
+#   mongodb-k8s:
+#     image: mongo:latest
+#     restart: always
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - mongodb-k8s-volume:/data/db
 
-volumes:
-  mongodb-k8s-volume: {}
+# volumes:
+#   mongodb-k8s-volume: {}
