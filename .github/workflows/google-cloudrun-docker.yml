@@ -42,8 +42,7 @@
 ---
 name: Build and Push Image to Google Cloud Platform
 on:
-  push:
-    branches: [ github-gcp ]
+  push
 jobs:
   build-push-gcr:
     name: Build and Push to GCP
