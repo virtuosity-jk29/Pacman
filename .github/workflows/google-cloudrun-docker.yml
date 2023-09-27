@@ -6,11 +6,9 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-
-     env:
+    env:
       IMAGE_NAME: hong0163215089/pack8s
       PROJECT_ID: core-crossing-400204
-
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
