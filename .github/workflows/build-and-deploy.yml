@@ -37,6 +37,6 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ env.PROJECT_ID }}
       run: |-
-        gcloud container clusters get-credentials pacman-k8s --region adia-east1
+        gcloud container clusters get-credentials pacman-k8s --region asia-east1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources.yaml
         kubectl apply -f app.yaml
