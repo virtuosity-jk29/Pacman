@@ -30,9 +30,9 @@ jobs:
         GOOGLE_PROJECT: ${{ env.PROJECT_ID }}
       run: |-
         gcloud auth configure-docker asia-southeast1-docker.pkg.dev
-        docker build -t asia-southeast1-docker.pkg.dev/core-crossing-400204/image/$PROJECT_ID/$IMAGE_NAME:latest --no-cache -f docker/Dockerfile  .
-        docker push asia-southeast1-docker.pkg.dev/core-crossing-400204/image/$PROJECT_ID/$IMAGE_NAME:latest 
-    
+        docker build -t asia-southeast1-docker.pkg.dev/$GOOGLE_PROJECT/image/$PROJECT_ID/$IMAGE_NAME:latest --no-cache -f docker/Dockerfile  .
+        docker push asia-southeast1-docker.pkg.dev/$GOOGLE_PROJECT/image/$PROJECT_ID/$IMAGE_NAME:latest 
+
     - name: deploy to gke
       env:
         GOOGLE_PROJECT: ${{ env.PROJECT_ID }}
