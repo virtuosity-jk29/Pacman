@@ -3,7 +3,7 @@ substitutions:
   _IMAGE_NAME: 'hong0163215089/pack8s'
 steps:
 - name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/USERNAME/REPOSITORY', '.']
+  args: ['clone', 'https://github.com/virtuosity-jk29/Pacman.git', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/$IMAGE_NAME:latest', '--no-cache', '-f', 'docker/Dockerfile', '.']
 - name: 'gcr.io/cloud-builders/docker'
