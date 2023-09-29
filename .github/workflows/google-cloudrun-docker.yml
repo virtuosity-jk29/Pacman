@@ -9,6 +9,9 @@ jobs:
     env:
       IMAGE_NAME: hong0163215089/pack8s
       PROJECT_ID: core-crossing-400204
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -36,3 +39,14 @@ jobs:
       run: |-
         docker tag $IMAGE_NAME:latest asia-southeast1-docker.pkg.dev/core-crossing-400204/image/$PROJECT_ID/$IMAGE_NAME:latest 
         docker push asia-southeast1-docker.pkg.dev/core-crossing-400204/image/$PROJECT_ID/$IMAGE_NAME:latest
+    
+    - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+     - name: Build and push Docker image
+        run: |-
+          docker build . -t $IMAGE_NAME:latest $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
+          docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
