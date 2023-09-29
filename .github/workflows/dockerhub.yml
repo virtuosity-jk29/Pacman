@@ -23,7 +23,7 @@ jobs:
       - name: Build and push Docker image
         run: |
         
-          IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/pack8s:${{ github.sha }}
+          IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/pack8s:latest
         
           docker build . -t $IMAGE_TAG  --no-cache -f docker/Dockerfile 
           docker push $IMAGE_TAG
