@@ -1,3 +1,6 @@
+substitutions:
+  _IMAGE_NAME: hong0163215089/pack8s
+  _PROJECT_ID: core-crossing-400204
 steps:
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone', 'https://github.com/USERNAME/REPOSITORY', '.']
