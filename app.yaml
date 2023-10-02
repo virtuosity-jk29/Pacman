@@ -26,8 +26,9 @@ spec:
     spec:
       containers:
         - name: pacman-k8s
-           image: hong0163215089/pack8s:DOCKER_IMG_TAG
-          #image: us-central1-docker.pkg.dev/core-crossing-400204/pacman/core-crossing-400204/hong0163215089/pack8s:latest 
+           #image: hong0163215089/pack8s:DOCKER_IMG_TAG
+          image: us-central1-docker.pkg.dev/core-crossing-400204/pacman/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
+          
           ports:
             - containerPort: 8080
           env:
