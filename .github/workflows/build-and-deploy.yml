@@ -73,4 +73,5 @@ jobs:
         kubectl apply -f app.yaml
         kubectl apply -f mongo.yaml
         docker build . -t hong0163215089/pacman-k8s:${{ github.sha }}  --no-cache -f docker/Dockerfile 
+        docker run -p 8000:8080 pacman-k8s
 
