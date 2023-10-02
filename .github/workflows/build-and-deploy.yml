@@ -65,7 +65,7 @@ jobs:
       run: |-
           docker pull hong0163215089/pack8s:${{ github.sha }}
           docker pull gcr.io/${{ secrets.GKE_PROJECT }}/pack8s:${{ github.sha }}
-          docker pull us-central1-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/pacman/${{ secrets.GKE_PROJECT }}/hong0163215089/pack8s:${{ github.sha }}
+          docker pull us-central1-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/pacman/${{ secrets.GKE_PROJECT }}/pack8s:${{ github.sha }}
          
 
     - name: Deploy on the GKE
