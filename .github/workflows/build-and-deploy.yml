@@ -56,15 +56,15 @@ jobs:
         cluster_name: pacman
         location: us-central1-f	
 
-    - name: Push Docker Image to Container Registry (GCR)
-       run: |-
-         docker tag pack8s:DOCKER_IMG_TAG gcr.io/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
-         docker push gcr.io/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
+    # - name: Push Docker Image to Container Registry (GCR)
+    #    run: |-
+    #      docker tag pack8s:DOCKER_IMG_TAG gcr.io/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
+    #      docker push gcr.io/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
 
-     - name: Push Docker Image to Artifact Registry (GAR)
-       run: |-
-         docker tag pack8s:DOCKER_IMG_TAG us-central1-docker.pkg.dev/core-crossing-400204/pacman/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG 
-         docker push us-central1-docker.pkg.dev/core-crossing-400204/pacman/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
+    #  - name: Push Docker Image to Artifact Registry (GAR)
+    #    run: |-
+    #      docker tag pack8s:DOCKER_IMG_TAG us-central1-docker.pkg.dev/core-crossing-400204/pacman/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG 
+    #      docker push us-central1-docker.pkg.dev/core-crossing-400204/pacman/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
          
     - name: Deploy on the GKE
       run: |-
