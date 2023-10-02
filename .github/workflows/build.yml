@@ -28,7 +28,7 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ env.PROJECT_ID }}
       run: |-
-        gcloud auth configure-docker asia-southeast1-docker.pkg.dev
+        gcloud auth configure-docker us-central1-docker.pkg.dev
         docker build -t us-central1-docker.pkg.dev/core-crossing-400204/pacman/$PROJECT_ID/$IMAGE_NAME:latest --no-cache -f docker/Dockerfile  .
         docker push us-central1-docker.pkg.dev/core-crossing-400204/pacman/$PROJECT_ID/$IMAGE_NAME:latest 
 

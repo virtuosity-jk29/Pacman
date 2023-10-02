@@ -29,14 +29,14 @@ jobs:
       env:
         GOOGLE_PROJECT: ${{ env.PROJECT_ID }}
       run: |-
-        gcloud auth configure-docker asia-southeast1-docker.pkg.dev
-        docker build -t asia-southeast1-docker.pkg.dev/$GOOGLE_PROJECT/image/$PROJECT_ID/$IMAGE_NAME:latest --no-cache -f docker/Dockerfile  .
-        docker push asia-southeast1-docker.pkg.dev/$GOOGLE_PROJECT/image/$PROJECT_ID/$IMAGE_NAME:latest 
+        gcloud auth configure-docker us-central1-docker.pkg.dev
+        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/image/$PROJECT_ID/$IMAGE_NAME:latest --no-cache -f docker/Dockerfile  .
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/image/$PROJECT_ID/$IMAGE_NAME:latest 
 
     - name: deploy to gke
       env:
         GOOGLE_PROJECT: ${{ env.PROJECT_ID }}
       run: |-
-        gcloud container clusters get-credentials pacman-k8s --region asia-east1
+        gcloud container clusters get-credentials pacman --region us-central1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" app.yaml
         kubectl apply -f app.yaml
