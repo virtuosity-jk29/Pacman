@@ -55,14 +55,9 @@ jobs:
       run: |-
         docker push "gcr.io/${{ secrets.GKE_PROJECT }}/${{ env.IMAGE }}:$GITHUB_SHA"
 
-    # Set up kustomize
-    # - name: Set up Kustomize
-    #   run: |-
-    #     curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-    #     chmod u+x ./kustomize
-
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
-        gcloud container clusters get-credentials pacman --zone us-central1-f	 --project ${{ secrets.GKE_PROJECT }}
+         gcloud container clusters get-credentials pacman --zone us-central1
+         sed -i "s/GOOGLE_PROJECT/${{ secrets.GKE_PROJECT }}/g" app.yaml
         kubectl apply -f app.yaml
