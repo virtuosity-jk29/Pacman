@@ -69,6 +69,6 @@ jobs:
          
 
     - name: Deploy on the GKE
-      run: |-s
+      run: |-
         sed -i -e 's/DOCKER_IMG_TAG/'${{ github.sha }}'/' app.yaml
         kubectl apply -f app.yaml
