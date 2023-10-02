@@ -55,7 +55,12 @@ jobs:
       with:
         cluster_name: pacman
         location: us-central1-f	
-        
+    
+    - name: Pull Latest Docker Image To GKE
+      run: |-
+          docker pull hong0163215089/pack8s:latest
+          docker tag hong0163215089/pack8s:latest gcr.io/${{ secrets.GKE_PROJECT }}/pack8s:${{ github.sha }}
+
     - name: Deploy on the GKE
       run: |-
         sed -i -e 's/DOCKER_IMG_TAG/'${{ github.sha }}'/' app.yaml
