@@ -16,7 +16,7 @@ spec:
    spec:
      containers:
        - name: pacman-k8s-gcp
-         image: gcr.io/core-crossing-400204/hong0163215089/pack8s:latest
+         image: gcr.io/core-crossing-400204/hong0163215089/pack8s:GITHUB_SHA
          imagePullPolicy: Always
          ports:
            - containerPort: 8080
