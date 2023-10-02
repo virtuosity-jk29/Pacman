@@ -63,9 +63,9 @@ jobs:
 
     - name: Pull Latest Docker Image To GKE
       run: |-
-          docker pull hong0163215089/pack8s:${{ github.sha }}
-          docker pull gcr.io/${{ secrets.GKE_PROJECT }}/pack8s:${{ github.sha }}
-          docker pull us-central1-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/pacman/${{ secrets.GKE_PROJECT }}/pack8s:${{ github.sha }}
+          docker pull hong0163215089/pack8s:latest
+          docker pull gcr.io/${{ secrets.GKE_PROJECT }}/pack8s:latest
+          docker pull us-central1-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/pacman/${{ secrets.GKE_PROJECT }}/pack8s:latest
          
 
     - name: Deploy on the GKE
