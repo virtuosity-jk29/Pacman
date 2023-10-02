@@ -53,8 +53,8 @@ jobs:
     - name: Get GKE Credentials
       uses: google-github-actions/get-gke-credentials@v1
       with:
-        cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
-        location: ${{ secrets.GKE_CLUSTER_ZONE }}
+        cluster_name: pacman
+        location: us-central1-f	
 
     - name: Deploy on the GKE
       run: |-
