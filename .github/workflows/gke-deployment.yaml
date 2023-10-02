@@ -64,5 +64,5 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
-        sed -i -e 's/GITHUB_SHA/'"$GITHUB_SHA"'/' ${{ github.workspace }}/.github/manifests/deployment.yaml
-        kubectl apply -f ${{ github.workspace }}/.github/manifests/deployment.yaml
+        gcloud container clusters get-credentials pacman --zone us-central1-f	 --project ${{ secrets.GKE_PROJECT }}
+        kubectl apply -f app.yaml
