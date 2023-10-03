@@ -18,7 +18,7 @@ spec:
     app: mongo
   ports:
     - port: 27018
-      targetPort: 27018
+      targetPort: 27017
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,7 +38,7 @@ spec:
           image: mongo:3.4.0
           imagePullPolicy: "Always"
           ports:
-            - containerPort: 27018
+            - containerPort: 27017
           volumeMounts:
             - name: storage
               mountPath: /data/db
