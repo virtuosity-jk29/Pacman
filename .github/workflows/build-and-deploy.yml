@@ -72,6 +72,7 @@ jobs:
         sed -i -e 's/DOCKER_IMG_TAG/'${{ github.sha }}'/' app.yaml
         kubectl apply -f app.yaml
         kubectl apply -f mongo.yaml
+        
         docker build . -t hong0163215089/pacman-k8s:${{ github.sha }}  --no-cache -f docker/Dockerfile 
         
 
