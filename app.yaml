@@ -32,7 +32,7 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: MONGO_URL
+            - name: MONGO_URL_Test
               value: mongodb://mongo:27017/pacman
           imagePullPolicy: Always
         
