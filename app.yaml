@@ -32,7 +32,7 @@ spec:
           ports:
             - containerPort: 8080
             env:
-            - name: MONGO_SERVICE_HOST
+            - name: MONGO_URL
               value: mongodb://mongo:27018/pacman
           imagePullPolicy: Always
         
