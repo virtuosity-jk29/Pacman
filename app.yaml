@@ -26,23 +26,12 @@ spec:
     spec:
       containers:
         - name: pacman-k8s
-           image: hong0163215089/pack8s:DOCKER_IMG_TAG
+          image: hong0163215089/pacman-k8s:DOCKER_IMG_TAG
           #image: us-central1-docker.pkg.dev/core-crossing-400204/pacman/core-crossing-400204/hong0163215089/pack8s:DOCKER_IMG_TAG
           
           ports:
             - containerPort: 8080
           env:
-            - name: MONGO_SERVICE_HOST
-              value: "mongodb://mongo:27018/pacman"
-            - name: MONGO_DATABASE
-              value: "pacman"
-            - name: MY_MONGO_PORT
-              value: "27017"
-            - name: MONGO_USE_SSL
-              value: "false"
-            - name: MONGO_VALIDATE_SSL
-              value: "true"
+            - name: MONGO_URL
+              value: mongodb://mongo:27018/pacman-k8s
           imagePullPolicy: Always
-        
-
-    
