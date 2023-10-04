@@ -35,7 +35,7 @@ spec:
             # - name: MONGO_URL
             #   value: mongodb://mongo:27018/pacman-k8s
             - name: MONGO_SERVICE_HOST
-              value: "12.12.12.12"
+              value: "10.44.0.8"
             - name: MONGO_DATABASE
               value: "pacman"
             - name: MY_MONGO_PORT
