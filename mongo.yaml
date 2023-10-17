@@ -17,7 +17,8 @@ spec:
   selector:
     app: mongo
   ports:
-    - port: 27018
+    # - port: 27018
+    - port: 27017
       targetPort: 27017
 ---
 apiVersion: apps/v1
