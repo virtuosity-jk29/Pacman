@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - master
+      - github-sonarqube
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
