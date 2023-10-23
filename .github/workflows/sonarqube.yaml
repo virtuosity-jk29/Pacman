@@ -6,7 +6,8 @@ jobs:
   sonarqube:
     name: SonarQube Scan
     runs-on: ubuntu-latest
-      steps: 
+
+      steps:
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
