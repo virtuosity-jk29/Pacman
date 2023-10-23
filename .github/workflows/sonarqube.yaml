@@ -28,38 +28,43 @@
 #             SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
 
-name: SonarQube 
+name: SonarQube Code Analysis
 
 on:
   push:
     branches:
-      - github-sonarqube
+      - main # or the branch you want to trigger the analysis on
+  pull_request:
+    branches:
+      - main # or the branch you want to trigger the analysis on
 
 jobs:
-  sonarqube:
+  sonarqube-analysis:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
+    
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 14 # or your desired Node.js version
         
     - name: Install dependencies
       run: npm install
       
-    - name: SonarQube Scan with Debug Logging
+    - name: Run tests # If you have tests, run them here
+      run: npm test
+      
+    - name: SonarQube Scan
       run: |
-        npm install -g sonarqube-scanner
-        sonar-scanner -X \
+        npm install -g sonarqube-scanner # Install SonarQube Scanner globally
+        sonar-scanner \
+          -Dsonar.host.url=http://localhost:9099 \
           -Dsonar.projectKey=pacman \
-          -Dsonar.organization=virtuosity-jk29 \
           -Dsonar.sources=. \
-          -Dsonar.host.url=$SONAR_HOST_URL
-          -Dsonar.login=$SONAR_TOKEN
+          -Dsonar.login= $SONAR_TOKEN
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        
