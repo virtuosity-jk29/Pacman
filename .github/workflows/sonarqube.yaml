@@ -22,7 +22,7 @@ jobs:
 
       - name: Run SonarCloud Scan
         run: |
-          sonar-scanner.bat ^
+          C:\Users\Virtuosity\Documents\Github\SonarQube\sonar-scanner-5.0.1.3006-windows\bin\sonar-scanner.bat ^
             -D"sonar.organization=virtuosity-jk29" ^
             -D"sonar.projectKey=virtuosity-jk29_Pacman" ^
             -D"sonar.sources=." ^
