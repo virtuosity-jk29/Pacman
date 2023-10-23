@@ -55,7 +55,7 @@ jobs:
       run: |
         npm install -g sonarqube-scanner
         sonar-scanner -X \
-          -Dsonar.projectKey=sonarqube \
+          -Dsonar.projectKey=pacman \
           -Dsonar.organization=virtuosity-jk29 \
           -Dsonar.sources=. \
           -Dsonar.host.url=$SONAR_HOST_URL
