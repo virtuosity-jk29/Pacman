@@ -41,9 +41,21 @@ jobs:
         
     - name: Install dependencies
       run: npm install
-      
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
+    
+    - name: SonarQube Scan with Debug Logging
+      run: |
+        npm install -g sonarqube-scanner
+        sonar-scanner -X \
+          -Dsonar.projectKey=your_project_key \
+          -Dsonar.organization=your_organization_key \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=$SONAR_TOKEN
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        
+    # - name: SonarQube Scan
+    #   uses: sonarsource/sonarqube-scan-action@master
+    #   env:
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
