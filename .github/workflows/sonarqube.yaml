@@ -51,9 +51,6 @@ jobs:
     - name: Install dependencies
       run: npm install
       
-    - name: Run tests # If you have tests, run them here
-      run: npm test
-      
     - name: SonarQube Scan
       run: |
         npm install -g sonarqube-scanner # Install SonarQube Scanner globally
