@@ -27,6 +27,7 @@ name: SonarQube Analysis
 on:
   push:
     branches:
+      - main
       - github-sonarqube  # Run SonarQube analysis only for the master branch (optional)
 
 jobs:
