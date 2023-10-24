@@ -3,7 +3,6 @@ name: Build
 on:
   push:
     branches:
-      - main
       - github-sonarqube        # The default branch
           # The other branches to be analyzed
 

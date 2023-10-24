@@ -1,6 +1,6 @@
 FROM node:boron
 
-MAINTAINER Ivan Font <ifont@redhat.com>
+LABEL maintainer="Ivan Font <ifont@redhat.com>"
 
 # Create app directory
 RUN mkdir -p /usr/src/app
