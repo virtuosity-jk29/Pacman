@@ -3,9 +3,9 @@ name: Build
 on:
   push:
     branches:
-      - main        # The default branch
-      - branch-*    # The other branches to be analyzed
-      
+      - github-sonarqube        # The default branch
+      - main    # The other branches to be analyzed
+
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
