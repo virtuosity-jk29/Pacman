@@ -1,53 +1,26 @@
 # Sonar cloud
-# name: Build
-# on:
-#   push:
-#     branches:
-#       - github-sonarqube        # The default branch
-#       - main    # The other branches to be analyzed
-
-#   pull_request:
-#     types: [opened, synchronize, reopened]
-# jobs:
-#   sonarcloud:
-#     name: SonarCloud
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#         with:
-#           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-#       - name: SonarCloud Scan
-#         uses: SonarSource/sonarcloud-github-action@master
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-name: SonarQube Analysis
-
+name: Build
 on:
   push:
     branches:
-      - main
-      - github-sonarqube  # Run SonarQube analysis only for the master branch (optional)
+      - github-sonarqube        # The default branch
+          # The other branches to be analyzed
 
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
-  sonarqube_analysis:
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v3
         with:
-          java-version: 11
-        
-      - name: SonarQube Analysis
-        run: |
-          C:\Users\Virtuosity\Documents\Github\SonarQube\sonar-scanner-5.0.1.3006-windows\bin\sonar-scanner.bat -D"sonar.projectKey=virtuosity-jk29_Pacman" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io" -D"sonar.token=326ebd4b4eb915f93457db5ffeb9895c0b90eb90"
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Store your SonarQube access token in GitHub repository secrets
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
 ##########################################################################################################
