@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!--<html lang="en">-->
+
 <html lang="en" manifest="cache.manifest">
 <head>
     <meta charset="utf-8" />
@@ -93,7 +93,7 @@
                 <caption>Live Statistics Table</caption>
                 <thead>
                 <tr>
-                    <!-- TODO: add cloud and host to livestats -->
+                    
                     <th id="userid">ID</th>
                     <th id="cloudprovider">Cloud</th>
                     <th id="zone">Zone</th>
@@ -149,10 +149,10 @@
             The ghosts have two different moods that change the way they act during the game.
             <h3>Scatter mood</h3>
             <p>This is the default mood. When ghosts are in scatter mood, they will just go to their home corner and stay there.</p>
-            <img src="img/instructions/instructions_scatter.PNG">
+            <img src="img/instructions/instructions_scatter.PNG" alt="image">
             <h3>Chase mood</h3>
             <p>After a certain time the ghosts change their mood and want to go chasing pacman. This is indicated through the walls turning red.</p>
-            <img src="img/instructions/instructions_chase.PNG">
+            <img src="img/instructions/instructions_chase.PNG" alt="image">
         </div>
 
         <div>
@@ -161,7 +161,7 @@
             <p>The goal of every level is, to eat all the white pills without getting catched by the ghosts. One pill results in 10 points.</p>
             <h3>Powerpills</h3>
             <p>In every level there are 4 powerpills, which are a bit bigger than the regular ones. If Pac-Man eats those, he will get strong enough to eat the ghosts. You can see this indicated by the ghosts turning blue. One powerpill results in 50 points.</p>
-            <img src="img/instructions/instructions_powerpill.PNG">
+            <img src="img/instructions/instructions_powerpill.PNG" alt="image">
             <p>Eating a ghost results in 100 points. The soul of the ghost will return to the ghost house before starting to chase Pac-Man again.</p>
         </div>
 
@@ -174,8 +174,8 @@
     <div>
         <h1>Info</h1>
         <p>Current Version: 1.02 (05.02.2018)</p>
-        <img src="img/platzh1rsch-logo.png">
-        <p>Pac-Man is Open Source, originally written by <a href="http://platzh1rsch.ch">platzh1rsch</a> and modified by <a href="http://ivanfont.com">Ivan Font</a>. You can get the original code <a target="_blank" href="https://github.com/platzhersh/pacman-canvas">here</a> or this modified version <a target="_blank" href="https://github.com/font/pacman">here</a>.</p>
+        <img src="img/platzh1rsch-logo.png" alt="image">
+        <p>Pac-Man is Open Source, originally written by <a href="http://platzh1rsch.ch">platzh1rsch</a> and modified by <a href="http://ivanfont.com">Ivan Font</a>. You can get the original code <a target="_blank" href="https://github.com/platzhersh/pacman-canvas" rel="noopener">here</a> or this modified version <a target="_blank" href="https://github.com/font/pacman" rel="noopener">here</a>.</p>
         <p>If you have any suggestions how to make this app better, please file an issue on the github repo.</p>
         <p>
     </div>
@@ -198,7 +198,7 @@
         <div class="lives">Lives: </div>
 
         <div class="controlSound">
-            <img src="img/audio-icon-mute.png" id="mute">
+            <img src="img/audio-icon-mute.png" id="mute" alt="image">
         </div>
         <!-- canvas is splitted into 18x13 fields -->
         <div id="canvas-container">
@@ -214,9 +214,6 @@
         </div>
 
         <div class="controls" id="game-buttons">
-        <!-- Will be moved to Instructions
-        <p class="nomobile">Use W-A-S-D keys to navigate Pac-Man</p>
-        -->
 
             <!-- OLD Buttons -->
             <div>
@@ -247,8 +244,8 @@
     </div>
 
     <div class="description nomobile">
-        <p>This whole thing was written in HTML5, CSS3 and Javascript (using small bits of jquery). For the basics I was following the <a href="http://devhammer.net/blog/exploring-html5-canvas-part-1---introduction" target="_blank">"Exploring HTML5 Canvas"</a> Tutorials (Part 1 - 6) by Devhammer. Thanks for the great Tutorial!</a>
-        <p>For some other stuff, like how to write objectorientated javascript I was following the tutorials over at <a href="http://www.codecademy.com/" target="_blank">http://www.codecademy.com/</a>, which is a really great site to learn Javascript and also other languages.</a>
+        <p>This whole thing was written in HTML5, CSS3 and Javascript (using small bits of jquery). For the basics I was following the <a href="http://devhammer.net/blog/exploring-html5-canvas-part-1---introduction" target="_blank" rel="noopener">"Exploring HTML5 Canvas"</a> Tutorials (Part 1 - 6) by Devhammer. Thanks for the great Tutorial!</a>
+        <p>For some other stuff, like how to write objectorientated javascript I was following the tutorials over at <a href="http://www.codecademy.com/" target="_blank" rel="noopener">http://www.codecademy.com/</a>, which is a really great site to learn Javascript and also other languages.</a>
 
         <span id="audio">
             <audio id="theme" preload="auto">
