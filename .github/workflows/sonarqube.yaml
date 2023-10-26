@@ -1,56 +1,58 @@
-# # Sonar cloud
-# name: Build
+# Sonar cloud with github connected
+name: Build
+on:
+  push:
+    branches:
+      - github-sonarqube        # The default branch
+          # The other branches to be analyzed
+
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+
+##########################################################################################################
+# name: SonarCloud Analysis
+
 # on:
 #   push:
 #     branches:
-#       - github-sonarqube        # The default branch
-#           # The other branches to be analyzed
+#       - github-sonarqube # or your main branch name
 
-#   pull_request:
-#     types: [opened, synchronize, reopened]
 # jobs:
 #   sonarcloud:
-#     name: SonarCloud
+#     name: SonarCloud Scan
 #     runs-on: ubuntu-latest
+
 #     steps:
-#       - uses: actions/checkout@v3
-#         with:
-#           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-#       - name: SonarCloud Scan
-#         uses: SonarSource/sonarcloud-github-action@master
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Install SonarCloud Scanner
+#         run: npm install -g sonarqube-scanner
+
+#       - name: Run SonarCloud Scan
+#         run: |
+#           sonar-scanner \
+#             -D"sonar.organization=virtuosity-jk29" \
+#             -D"sonar.projectKey=virtuosity-jk29_Pacman" \
+#             -D"sonar.sources=." \
+#             -D"sonar.host.url=https://sonarcloud.io"
 #         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
 #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
 ##########################################################################################################
-name: SonarCloud Analysis
-
-on:
-  push:
-    branches:
-      - github-sonarqube # or your main branch name
-
-jobs:
-  sonarcloud:
-    name: SonarCloud Scan
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install SonarCloud Scanner
-        run: npm install -g sonarqube-scanner
-
-      - name: Run SonarCloud Scan
-        run: |
-          sonar-scanner \
-            -D"sonar.organization=virtuosity-jk29" \
-            -D"sonar.projectKey=virtuosity-jk29_Pacman" \
-            -D"sonar.sources=." \
-            -D"sonar.host.url=https://sonarcloud.io"
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
 
