@@ -23,18 +23,10 @@ jobs:
           docker build -t $IMAGE_TAG ./docker
           docker push $IMAGE_TAG
 
-      - name: Snyk Docker scan
-        uses: snyk/actions/docker@master
-        with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-          args: snyk test
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
       - name: Snyk Docker monitor
-        uses: snyk/actions/docker@master
-        with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-          args: snyk monitor
+         - uses: actions/checkout@master
+         
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
