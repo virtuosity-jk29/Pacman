@@ -23,9 +23,6 @@ jobs:
           docker build -t $IMAGE_TAG ./docker
           docker push $IMAGE_TAG
 
-      - name: Snyk Docker monitor
-         - uses: actions/checkout@master
-         
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         env:
