@@ -1,3 +1,50 @@
+# name: Trivy Scan
+
+# on: push
+
+# jobs:
+#   push_to_registry:
+#     name: Push Docker image to Docker Hub with Trivy Scan and Report
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out the repo
+#         uses: actions/checkout@v2
+
+#       - name: Login to Docker Hub
+#         uses: docker/login-action@v1
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+#       - name: Build Docker image
+#         run: |
+#           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
+#           docker build -t $IMAGE_TAG ./docker
+#           docker push $IMAGE_TAG
+
+#       - name: Install Trivy
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install wget -y
+#           wget https://github.com/aquasecurity/trivy/releases/download/v0.20.1/trivy_0.20.1_Linux-64bit.deb
+#           sudo dpkg -i trivy_0.20.1_Linux-64bit.deb
+
+#       - name: Trivy Scan and Generate Report
+#         id: trivy
+#         run: |
+#           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
+#         #trivy --exit-code 0 -f json -o trivy-report.json $IMAGE_TAG
+#           trivy --format template --template "@contrib/html.tpl" -o report.html golang:1.12-alpine $IMAGE_TAG
+
+
+#       - name: Upload Trivy Report
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: trivy-report
+#           path: report.html
+
+##################################################################################################################
+
 name: Trivy Scan
 
 on: push
@@ -33,9 +80,7 @@ jobs:
         id: trivy
         run: |
           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-        #trivy --exit-code 0 -f json -o trivy-report.json $IMAGE_TAG
-          trivy --format template --template "@contrib/html.tpl" -o report.html golang:1.12-alpine $IMAGE_TAG
-
+          trivy --format template --template "@contrib/html.tpl" -o report.html $IMAGE_TAG
 
       - name: Upload Trivy Report
         uses: actions/upload-artifact@v2
