@@ -37,8 +37,8 @@ jobs:
           trivy --format template --template "@contrib/html.tpl" -o report.html golang:1.12-alpine $IMAGE_TAG
 
 
-      # - name: Upload Trivy Report
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: trivy-report
-      #     path: trivy-report.json
+      - name: Upload Trivy Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy-report
+          path: report.html
