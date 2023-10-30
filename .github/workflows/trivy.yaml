@@ -82,7 +82,7 @@ jobs:
         id: trivy
         run: |
           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-          trivy --format template --template "./trivy-html.tpl" -o trivy-report.html $IMAGE_TAG
+          trivy --format template --template "@contrib/html.tpl" -o trivy-report.html $IMAGE_TAG
 
       - name: Upload Trivy Report
         uses: actions/upload-artifact@v2
