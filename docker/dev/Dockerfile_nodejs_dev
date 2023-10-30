@@ -1,6 +1,6 @@
 FROM node:boron
 
-MAINTAINER Ivan Font <ifont@redhat.com>
+LABEL maintainer="Ivan Font <ifont@redhat.com>"
 
 # Create app directory and specify volume that will be bind mounted at runtime
 RUN mkdir -p /usr/src/app
