@@ -33,10 +33,12 @@ jobs:
         id: trivy
         run: |
           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-          trivy --exit-code 0 -f json -o trivy-report.json $IMAGE_TAG
+        #trivy --exit-code 0 -f json -o trivy-report.json $IMAGE_TAG
+          trivy image --format template --template "@contrib/html.tpl" -o report.html golang:1.12-alpine
 
-      - name: Upload Trivy Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: trivy-report
-          path: trivy-report.json
+
+      # - name: Upload Trivy Report
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: trivy-report
+      #     path: trivy-report.json
