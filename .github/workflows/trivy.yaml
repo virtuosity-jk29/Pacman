@@ -34,7 +34,7 @@
 #         run: |
 #           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
 #         #trivy --exit-code 0 -f json -o trivy-report.json $IMAGE_TAG
-#           trivy --format template --template "@contrib/html.tpl" -o report.html golang:1.12-alpine $IMAGE_TAG
+
 
 
 #       - name: Upload Trivy Report
@@ -75,6 +75,9 @@ jobs:
           sudo apt-get install wget -y
           wget https://github.com/aquasecurity/trivy/releases/download/v0.20.1/trivy_0.20.1_Linux-64bit.deb
           sudo dpkg -i trivy_0.20.1_Linux-64bit.deb
+
+        # Download Trivy HTML template
+          wget https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/html.tpl -O trivy-html.tpl
 
       - name: Trivy Scan and Generate Report
         id: trivy
