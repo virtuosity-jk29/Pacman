@@ -35,7 +35,7 @@
 
        
 # using self-hosted runner
-name: Node.js CI/CD
+name: github-self-hosted-runner
 
 on: push
 
