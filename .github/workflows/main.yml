@@ -26,6 +26,7 @@
 
 #     #   manual way
 
+
 #       - name: Build and push Docker image
 #         run: |
 #           IMAGE_TAG=${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
@@ -35,7 +36,7 @@
 
        
 # using self-hosted runner
-name: github-self-hosted-runner
+name: github runner
 
 on: push
 
@@ -58,18 +59,4 @@ jobs:
         run: | 
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }} ./docker
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/hong0163215089:${{ github.sha }}
-
-######### with sonarqube 
-
-      # - name: Install SonarCloud Scanner
-      #   run: npm install -g sonarqube-scanner
-
-      # - name: Run SonarCloud Scan
-      #   run: |
-      #    C:\Users\Virtuosity\Documents\Github\SonarQube\sonar-scanner-5.0.1.3006-windows\bin\sonar-scanner.bat 
-      #    -D"sonar.projectKey=github-sonarqube" 
-      #    -D"sonar.sources=." 
-      #    -D"sonar.host.url=http://localhost:9000" 
-      #    -D"sonar.token=sqp_2eff6aff449712ef663e291979482bf1b70a96bd"
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
