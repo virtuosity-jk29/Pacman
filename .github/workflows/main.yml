@@ -67,8 +67,9 @@ jobs:
       - name: Run SonarCloud Scan
         run: |
          C:\Users\Virtuosity\Documents\Github\SonarQube\sonar-scanner-5.0.1.3006-windows\bin\sonar-scanner.bat 
-         -D"sonar.projectKey=github-sonarqube" -D"sonar.sources=." 
+         -D"sonar.projectKey=github-sonarqube" 
+         -D"sonar.sources=." 
          -D"sonar.host.url=http://localhost:9000" 
-         -D"sonar.token=${{ secrets.SONAR_TOKEN }}"
+         -D"sonar.token=sqp_2eff6aff449712ef663e291979482bf1b70a96bd"
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
